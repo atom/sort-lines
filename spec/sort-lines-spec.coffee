@@ -27,9 +27,21 @@ describe "SortLines", ->
           Lithium
         """
 
-    describe "when lines are selected", ->
+    describe "when entire lines are selected", ->
       it "sorts the selected lines", ->
         editor.setSelectedBufferRange([[1,0], [4,0]])
+        sortLines(editor)
+        expect(editor.getText()).toBe """
+          Hydrogen
+          Beryllium
+          Helium
+          Lithium
+          Boron
+        """
+
+    describe "when partial lines are selected", ->
+      it "sorts the selected lines", ->
+        editor.setSelectedBufferRange([[1,3], [3,2]])
         sortLines(editor)
         expect(editor.getText()).toBe """
           Hydrogen
