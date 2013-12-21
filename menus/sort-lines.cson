@@ -1,0 +1,11 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Sort Lines'
+      'submenu': [
+        { 'label': 'Sort', 'command': 'sort-lines:sort' }
+      ]
+    ]
+  }
+]
