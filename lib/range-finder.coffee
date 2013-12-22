@@ -4,47 +4,41 @@ module.exports =
 class RangeFinder
 
   # Public
-  @rangeFor: (editor) ->
-    new RangeFinder(editor).range()
+  @rangesFor: (editor) ->
+    new RangeFinder(editor).ranges()
 
   # Public
   constructor: (@editor) ->
 
   # Public
-  range: ->
-    new Range [@startRow(), @startColumn()], [@endRow(), @endColumn()]
-
-  # Internal
-  startRow: ->
-    if @isSelectedRangeEmpty() then 0 else @selectedBufferRange().start.row
-
-  # Internal
-  startColumn: ->
-    0
-
-  # Internal
-  endRow: ->
-    if @isSelectedRangeEmpty()
-      @editor.getScreenLineCount()
+  ranges: ->
+    selectionRanges = @selectionRanges()
+    if _.isEmpty(selectionRanges)
+      [@sortableRangeForEntireBuffer()]
     else
-      @lastSelectedRow()
+      _.map selectionRanges, (selectionRange) =>
+        @sortableRangeFrom(selectionRange)
 
   # Internal
-  endColumn: ->
-    @editor.lineLengthForBufferRow(@endRow())
+  selectionRanges: ->
+    _.reject @editor.getSelectedBufferRanges(), (range) ->
+      range.isEmpty()
 
   # Internal
-  lastSelectedRow: ->
-    endPoint = @selectedBufferRange().end
-    if endPoint.column == 0
-      endPoint.row - 1
+  sortableRangeForEntireBuffer: ->
+    endRow = @editor.getScreenLineCount()
+    endCol = @editor.lineLengthForBufferRow(endRow)
+
+    new Range [0, 0], [endRow, endCol]
+
+  # Internal
+  sortableRangeFrom: (selectionRange) ->
+    startRow = selectionRange.start.row
+    startCol = 0
+    endRow = if selectionRange.end.column == 0
+      selectionRange.end.row - 1
     else
-      endPoint.row
+      selectionRange.end.row
+    endCol = @editor.lineLengthForBufferRow(endRow)
 
-  # Internal
-  selectedBufferRange: ->
-    @editor.getSelectedBufferRange()
-
-  # Internal
-  isSelectedRangeEmpty: ->
-    @selectedBufferRange().isEmpty()
+    new Range [startRow, startCol], [endRow, endCol]
