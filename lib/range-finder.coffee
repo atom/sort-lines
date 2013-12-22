@@ -47,8 +47,4 @@ class RangeFinder
 
   # Internal
   isSelectedRangeEmpty: ->
-    # TODO: Is there a method on Range that provides this functionality? Or, is
-    #       there a method on Point to compare it to another Point in this
-    #       manner?
-    range = @selectedBufferRange()
-    range.start.row == range.end.row and range.start.column == range.end.column
+    @selectedBufferRange().isEmpty()
