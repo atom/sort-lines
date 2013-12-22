@@ -2,11 +2,10 @@
 
 describe "SortLines", ->
   describe "sortLines(editor)", ->
-    [editor, buffer] = []
+    [editor] = []
 
     beforeEach ->
       editor = atom.project.openSync()
-      buffer = editor.getBuffer()
       editor.setText """
         Hydrogen
         Helium
