@@ -1,4 +1,3 @@
-{_} = require 'atom'
 RangeFinder = require './range-finder'
 
 module.exports =
@@ -9,7 +8,7 @@ module.exports =
 
   sortLines: (editor) ->
     lineRanges = RangeFinder.rangesFor(editor)
-    _.each lineRanges, (lineRange) ->
+    lineRanges.forEach (lineRange) ->
       textLines = editor.getTextInBufferRange(lineRange).split("\n")
       textLines.sort (a, b) -> a.localeCompare(b)
       editor.setTextInBufferRange(lineRange, textLines.join("\n"))
