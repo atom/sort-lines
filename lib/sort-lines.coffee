@@ -7,8 +7,8 @@ module.exports =
       @sortLines(editor)
 
   sortLines: (editor) ->
-    lineRanges = RangeFinder.rangesFor(editor)
-    lineRanges.forEach (lineRange) ->
-      textLines = editor.getTextInBufferRange(lineRange).split("\n")
+    sortableRanges = RangeFinder.rangesFor(editor)
+    sortableRanges.forEach (range) ->
+      textLines = editor.getTextInBufferRange(range).split("\n")
       textLines.sort (a, b) -> a.localeCompare(b)
-      editor.setTextInBufferRange(lineRange, textLines.join("\n"))
+      editor.setTextInBufferRange(range, textLines.join("\n"))
