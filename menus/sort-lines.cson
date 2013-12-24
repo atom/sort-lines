@@ -1,8 +1,8 @@
 'menu': [
   {
-    'label': 'Packages'
+    'label': 'Edit'
     'submenu': [
-      'label': 'Sort Lines'
+      'label': 'Lines'
       'submenu': [
         { 'label': 'Sort', 'command': 'sort-lines:sort' }
       ]
