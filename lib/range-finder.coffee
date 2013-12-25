@@ -26,10 +26,7 @@ class RangeFinder
 
   # Internal
   sortableRangeForEntireBuffer: ->
-    endRow = @editor.getScreenLineCount()
-    endCol = @editor.lineLengthForBufferRow(endRow)
-
-    new Range [0, 0], [endRow, endCol]
+    @editor.getBuffer().getRange()
 
   # Internal
   sortableRangeFrom: (selectionRange) ->
