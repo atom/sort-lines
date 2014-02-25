@@ -7,12 +7,7 @@
     "sort-lines:sort"
   ],
   "repository": "https://github.com/atom/sort-lines",
-  "licenses": [
-    {
-      "type": "Apache",
-      "url": "http://github.com/atom/sort-lines/raw/master/LICENSE.md"
-    }
-  ],
+  "license": "MIT",
   "engines": {
     "atom": ">0.39.0"
   },
