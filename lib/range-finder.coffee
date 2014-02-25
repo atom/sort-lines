@@ -1,8 +1,7 @@
-{_, Range} = require 'atom'
+{Range} = require 'atom'
 
 module.exports =
 class RangeFinder
-
   # Public
   @rangesFor: (editor) ->
     new RangeFinder(editor).ranges()
@@ -13,16 +12,16 @@ class RangeFinder
   # Public
   ranges: ->
     selectionRanges = @selectionRanges()
-    if _.isEmpty(selectionRanges)
+    if selectionRanges.length is 0
       [@sortableRangeForEntireBuffer()]
     else
-      _.map selectionRanges, (selectionRange) =>
+      selectionRanges.map (selectionRange) =>
         @sortableRangeFrom(selectionRange)
 
   # Internal
   selectionRanges: ->
-    _.reject @editor.getSelectedBufferRanges(), (range) ->
-      range.isEmpty()
+    @editor.getSelectedBufferRanges().filter (range) ->
+      not range.isEmpty()
 
   # Internal
   sortableRangeForEntireBuffer: ->
