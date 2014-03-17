@@ -21,5 +21,5 @@ sortLinesReversed = (editor) ->
   sortableRanges = RangeFinder.rangesFor(editor)
   sortableRanges.forEach (range) ->
     textLines = editor.getTextInBufferRange(range).split("\n")
-    textLines.sort (a, b) -> a.localeCompare(b)
-    editor.setTextInBufferRange(range, textLines.reverse().join("\n"))
+    textLines.sort (a, b) -> b.localeCompare(a)
+    editor.setTextInBufferRange(range, textLines.join("\n"))
