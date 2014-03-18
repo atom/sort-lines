@@ -4,7 +4,8 @@
   "version": "0.2.0",
   "description": "Sorts your lines. Never gets tired.",
   "activationEvents": [
-    "sort-lines:sort"
+    "sort-lines:sort",
+    "sort-lines:reverse-sort"
   ],
   "repository": "https://github.com/atom/sort-lines",
   "license": "MIT",

@@ -4,7 +4,8 @@
     'submenu': [
       'label': 'Lines'
       'submenu': [
-        { 'label': 'Sort', 'command': 'sort-lines:sort' }
+        { 'label': 'Sort', 'command': 'sort-lines:sort' },
+        { 'label': 'Reverse Sort', 'command': 'sort-lines:reverse-sort'}
       ]
     ]
   }
