@@ -6,6 +6,7 @@
       'submenu': [
         { 'label': 'Sort', 'command': 'sort-lines:sort' }
         { 'label': 'Reverse Sort', 'command': 'sort-lines:reverse-sort' }
+        { 'label': 'Unique', 'command': 'sort-lines:unique' }
       ]
     ]
   }

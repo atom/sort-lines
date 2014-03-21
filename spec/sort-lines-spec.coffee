@@ -13,6 +13,11 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  uniqueLinesReversed = (callback) ->
+    editorView.trigger "sort-lines:unique"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     atom.workspaceView = new WorkspaceView
     atom.workspaceView.openSync()
@@ -120,4 +125,34 @@ describe "sorting lines", ->
           Lithium
           Hydrogen
           Helium
+        """
+
+  describe "uniqueing", ->
+    it "uniques all lines but does not change order", ->
+      editor.setText """
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      uniqueLines ->
+        expect(editor.getText()).toBe """
+          Hydrogen
+          Helium
+          Lithium
         """

@@ -5,7 +5,8 @@
   "description": "Sorts your lines. Never gets tired.",
   "activationEvents": [
     "sort-lines:sort",
-    "sort-lines:reverse-sort"
+    "sort-lines:reverse-sort",
+    "sort-lines:unique"
   ],
   "repository": "https://github.com/atom/sort-lines",
   "license": "MIT",
