@@ -1,4 +1,4 @@
-# Sort Lines Package
+# Sort Lines Package [![Build Status](https://travis-ci.org/atom/sort-lines.svg?branch=master)](https://travis-ci.org/atom/sort-lines)
 
 Sorts your lines in Atom, never gets tired.
 
