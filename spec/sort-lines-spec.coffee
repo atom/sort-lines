@@ -13,7 +13,7 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
-  uniqueLinesReversed = (callback) ->
+  uniqueLines = (callback) ->
     editorView.trigger "sort-lines:unique"
     waitsForPromise -> activationPromise
     runs(callback)
