@@ -13,7 +13,7 @@ class RangeFinder
   ranges: ->
     selectionRanges = @selectionRanges()
     if selectionRanges.length is 0
-      [@sortableRangeForEntireBuffer()]
+      [@sortableRangeFrom(@sortableRangeForEntireBuffer())]
     else
       selectionRanges.map (selectionRange) =>
         @sortableRangeFrom(selectionRange)
