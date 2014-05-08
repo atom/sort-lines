@@ -38,6 +38,23 @@ describe "sorting lines", ->
           Lithium
         """
 
+    it "sorts all lines, ignoring the trailing new line", ->
+      editor.setText """
+        Hydrogen
+        Helium
+        Lithium
+
+      """
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLines ->
+        expect(editor.getText()).toBe """
+          Helium
+          Hydrogen
+          Lithium
+
+        """
+
   describe "when entire lines are selected", ->
     it "sorts the selected lines", ->
       editor.setText """
