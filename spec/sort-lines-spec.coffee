@@ -18,6 +18,11 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  sortLinesInsensitive = (callback) ->
+    editorView.trigger "sort-lines:case-insensitve-sort"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     atom.workspaceView = new WorkspaceView
     atom.workspaceView.openSync()

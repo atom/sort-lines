@@ -14,6 +14,10 @@ module.exports =
       editor = atom.workspace.getActiveEditor()
       uniqueLines(editor)
 
+    atom.workspaceView.command 'sort-lines:case-insensitive-sort', '.editor', ->
+      editor = atom.workspaceView.getActivePaneItem()
+      sortLinesInsensitive(editor)
+
 sortLines = (editor) ->
   sortableRanges = RangeFinder.rangesFor(editor)
   sortableRanges.forEach (range) ->
@@ -34,3 +38,10 @@ uniqueLines = (editor) ->
     textLines = editor.getTextInBufferRange(range).split("\n")
     uniqued = textLines.filter (value, index, self) -> self.indexOf(value) == index
     editor.setTextInBufferRange(range, uniqued.join("\n"))
+
+sortLinesInsensitive = (editor) ->
+  sortableRanges = RangeFinder.rangesFor(editor)
+  sortableRanges.forEach (range) ->
+    textLines = editor.getTextInBufferRange(range).split("\n")
+    textLines.sort (a, b) -> a.localeCompare(b, undefined, {sensitivity: "base"})
+    editor.setTextInBufferRange(range, textLines.join("\n"))

@@ -7,6 +7,7 @@
     "sort-lines:sort",
     "sort-lines:reverse-sort",
     "sort-lines:unique"
+    "sort-lines:case-insensitive-sort"
   ],
   "repository": "https://github.com/atom/sort-lines",
   "license": "MIT",
