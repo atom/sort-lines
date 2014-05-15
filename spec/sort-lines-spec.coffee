@@ -178,6 +178,7 @@ describe "sorting lines", ->
           Helium
           Lithium
         """
+
   describe "case-insensitive sorting", ->
     it "sorts all lines, ignoring case", ->
       editor.setText """
@@ -192,9 +193,9 @@ describe "sorting lines", ->
 
       sortLinesInsensitive ->
         expect(editor.getText()).toBe """
-          Helium
           helium
+          Helium
           Hydrogen
-          Lithium
           lithium
+          Lithium
         """
