@@ -19,7 +19,7 @@ describe "sorting lines", ->
     runs(callback)
 
   sortLinesInsensitive = (callback) ->
-    editorView.trigger "sort-lines:case-insensitve-sort"
+    editorView.trigger "sort-lines:case-insensitive-sort"
     waitsForPromise -> activationPromise
     runs(callback)
 
