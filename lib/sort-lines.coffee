@@ -43,5 +43,5 @@ sortLinesInsensitive = (editor) ->
   sortableRanges = RangeFinder.rangesFor(editor)
   sortableRanges.forEach (range) ->
     textLines = editor.getTextInBufferRange(range).split("\n")
-    textLines.sort (a, b) -> a.localeCompare(b, undefined, {sensitivity: "base"})
+    textLines.sort (a, b) -> a.toLowerCase().localeCompare(b.toLowerCase())
     editor.setTextInBufferRange(range, textLines.join("\n"))

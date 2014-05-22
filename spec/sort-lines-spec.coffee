@@ -18,7 +18,7 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
-  sortLinesInsensitive = (callback) ->
+  sortLineCaseInsensitive = (callback) ->
     editorView.trigger "sort-lines:case-insensitive-sort"
     waitsForPromise -> activationPromise
     runs(callback)
@@ -191,7 +191,7 @@ describe "sorting lines", ->
 
       editor.setCursorBufferPosition([0, 0])
 
-      sortLinesInsensitive ->
+      sortLineCaseInsensitive ->
         expect(editor.getText()).toBe """
           helium
           Helium
