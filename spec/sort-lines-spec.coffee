@@ -18,6 +18,11 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  sortLinesInsensitive = (callback) ->
+    editorView.trigger "sort-lines:case-insensitive-sort"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     atom.workspaceView = new WorkspaceView
     atom.workspaceView.openSync()
@@ -171,5 +176,26 @@ describe "sorting lines", ->
         expect(editor.getText()).toBe """
           Hydrogen
           Helium
+          Lithium
+        """
+
+  describe "case-insensitive sorting", ->
+    it "sorts all lines, ignoring case", ->
+      editor.setText """
+        Hydrogen
+        lithium
+        helium
+        Helium
+        Lithium
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesInsensitive ->
+        expect(editor.getText()).toBe """
+          helium
+          Helium
+          Hydrogen
+          lithium
           Lithium
         """
