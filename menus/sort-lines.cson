@@ -7,7 +7,7 @@
         { 'label': 'Sort', 'command': 'sort-lines:sort' }
         { 'label': 'Reverse Sort', 'command': 'sort-lines:reverse-sort' }
         { 'label': 'Unique', 'command': 'sort-lines:unique' }
-        { 'label': 'Sort (Case Insentivive)', 'command': 'sort-lines:case-insensitive-sort' }
+        { 'label': 'Sort (Case Insensitive)', 'command': 'sort-lines:case-insensitive-sort' }
       ]
     ]
   }
