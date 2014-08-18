@@ -15,7 +15,7 @@ module.exports =
       uniqueLines(editor)
 
     atom.workspaceView.command 'sort-lines:case-insensitive-sort', '.editor', ->
-      editor = atom.workspaceView.getActivePaneItem()
+      editor = atom.workspace.getActiveEditor()
       sortLinesInsensitive(editor)
 
 sortLines = (editor) ->
