@@ -25,12 +25,15 @@ describe "sorting lines", ->
 
   beforeEach ->
     atom.workspaceView = new WorkspaceView
-    atom.workspaceView.openSync()
 
-    editorView = atom.workspaceView.getActiveView()
-    editor = editorView.getEditor()
+    waitsForPromise ->
+      atom.workspace.open()
 
-    activationPromise = atom.packages.activatePackage('sort-lines')
+    runs ->
+      editorView = atom.workspaceView.getActiveView()
+      editor = editorView.getEditor()
+
+      activationPromise = atom.packages.activatePackage('sort-lines')
 
   describe "when no lines are selected", ->
     it "sorts all lines", ->
