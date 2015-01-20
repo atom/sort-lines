@@ -2,21 +2,19 @@ RangeFinder = require './range-finder'
 
 module.exports =
   activate: ->
-    atom.workspaceView.command 'sort-lines:sort', '.editor', ->
-      editor = atom.workspace.getActiveEditor()
-      sortLines(editor)
-
-    atom.workspaceView.command 'sort-lines:reverse-sort', '.editor', ->
-      editor = atom.workspace.getActiveEditor()
-      sortLinesReversed(editor)
-
-    atom.workspaceView.command 'sort-lines:unique', '.editor', ->
-      editor = atom.workspace.getActiveEditor()
-      uniqueLines(editor)
-
-    atom.workspaceView.command 'sort-lines:case-insensitive-sort', '.editor', ->
-      editor = atom.workspace.getActiveEditor()
-      sortLinesInsensitive(editor)
+    atom.commands.add 'atom-text-editor',
+      'sort-lines:sort': ->
+        editor = atom.workspace.getActiveTextEditor()
+        sortLines(editor)
+      'sort-lines:reverse-sort': ->
+        editor = atom.workspace.getActiveTextEditor()
+        sortLinesReversed(editor)
+      'sort-lines:unique': ->
+        editor = atom.workspace.getActiveTextEditor()
+        uniqueLines(editor)
+      'sort-lines:case-insensitive-sort': ->
+        editor = atom.workspace.getActiveTextEditor()
+        sortLinesInsensitive(editor)
 
 sortLines = (editor) ->
   sortableRanges = RangeFinder.rangesFor(editor)
