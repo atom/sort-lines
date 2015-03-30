@@ -5,9 +5,10 @@
       'label': 'Lines'
       'submenu': [
         { 'label': 'Sort', 'command': 'sort-lines:sort' }
+        { 'label': 'Case Insensitive Sort', 'command': 'sort-lines:case-insensitive-sort' }
         { 'label': 'Reverse', 'command': 'sort-lines:reverse' }
         { 'label': 'Unique', 'command': 'sort-lines:unique' }
-        { 'label': 'Sort (Case Insensitive)', 'command': 'sort-lines:case-insensitive-sort' }
+        { 'label': 'Shuffle', 'command': 'sort-lines:shuffle' }
       ]
     ]
   }

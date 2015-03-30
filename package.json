@@ -6,9 +6,10 @@
   "activationCommands": {
     "atom-text-editor": [
       "sort-lines:sort",
+      "sort-lines:case-insensitive-sort",
       "sort-lines:reverse",
       "sort-lines:unique",
-      "sort-lines:case-insensitive-sort"
+      "sort-lines:shuffle"
     ]
   },
   "repository": "https://github.com/atom/sort-lines",

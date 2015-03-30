@@ -4,41 +4,40 @@ module.exports =
   activate: ->
     atom.commands.add 'atom-text-editor',
       'sort-lines:sort': ->
-        editor = atom.workspace.getActiveTextEditor()
-        sortLines(editor)
-      'sort-lines:reverse': ->
-        editor = atom.workspace.getActiveTextEditor()
-        reverseLines(editor)
-      'sort-lines:unique': ->
-        editor = atom.workspace.getActiveTextEditor()
-        uniqueLines(editor)
+        run sort
       'sort-lines:case-insensitive-sort': ->
-        editor = atom.workspace.getActiveTextEditor()
-        sortLinesInsensitive(editor)
+        run sortInsensitive
+      'sort-lines:reverse': ->
+        run reverse
+      'sort-lines:unique': ->
+        run unique
+      'sort-lines:shuffle': ->
+        run shuffle
 
-sortLines = (editor) ->
-  sortableRanges = RangeFinder.rangesFor(editor)
-  sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
-    textLines.sort (a, b) -> a.localeCompare(b)
-    editor.setTextInBufferRange(range, textLines.join("\n"))
+run = (cmd) ->
+  editor = atom.workspace.getActiveTextEditor()
+  ranges = RangeFinder.rangesFor(editor)
+  ranges.forEach (range) ->
+    lines = editor.getTextInBufferRange(range).split("\n")
+    lines = cmd(lines)
+    editor.setTextInBufferRange(range, lines.join("\n"))
 
-reverseLines = (editor) ->
-  sortableRanges = RangeFinder.rangesFor(editor)
-  sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n").reverse()
-    editor.setTextInBufferRange(range, textLines.join("\n"))
+sort = (lines) ->
+  lines.sort() # Not using localeCompare() since it's buggy in V8.
 
-uniqueLines = (editor) ->
-  sortableRanges = RangeFinder.rangesFor(editor)
-  sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
-    uniqued = textLines.filter (value, index, self) -> self.indexOf(value) == index
-    editor.setTextInBufferRange(range, uniqued.join("\n"))
+sortInsensitive = (lines) ->
+  lines.sort (a, b) ->
+    r = a.toLowerCase() - b.toLowerCase()
+    if r == 0 then a-b else r
 
-sortLinesInsensitive = (editor) ->
-  sortableRanges = RangeFinder.rangesFor(editor)
-  sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
-    textLines.sort (a, b) -> a.toLowerCase().localeCompare(b.toLowerCase())
-    editor.setTextInBufferRange(range, textLines.join("\n"))
+reverse = (lines) ->
+  lines.reverse()
+
+unique = (lines) ->
+  lines.filter (value, index, self) -> self.indexOf(value) == index
+
+shuffle = (lines) ->
+  for i in [lines.length-1..1]
+    j = Math.floor(Math.random() * (i+1))
+    [lines[i], lines[j]] = [lines[j], lines[i]]
+  lines
