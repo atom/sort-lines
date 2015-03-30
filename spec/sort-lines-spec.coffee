@@ -7,8 +7,8 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
-  sortLinesReversed = (callback) ->
-    atom.commands.dispatch editorView, "sort-lines:reverse-sort"
+  reverseLines = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:reverse"
     waitsForPromise -> activationPromise
     runs(callback)
 
@@ -132,21 +132,23 @@ describe "sorting lines", ->
           Europium
         """
 
-  describe "reversed sorting", ->
-    it "sorts all lines in reverse order", ->
+  describe "reverse lines", ->
+    it "reverses all lines", ->
       editor.setText """
         Hydrogen
+        Aluminum
         Helium
         Lithium
       """
 
       editor.setCursorBufferPosition([0, 0])
 
-      sortLinesReversed ->
+      reverseLines ->
         expect(editor.getText()).toBe """
           Lithium
-          Hydrogen
           Helium
+          Aluminum
+          Hydrogen
         """
 
   describe "uniqueing", ->

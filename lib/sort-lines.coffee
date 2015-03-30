@@ -6,9 +6,9 @@ module.exports =
       'sort-lines:sort': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLines(editor)
-      'sort-lines:reverse-sort': ->
+      'sort-lines:reverse': ->
         editor = atom.workspace.getActiveTextEditor()
-        sortLinesReversed(editor)
+        reverseLines(editor)
       'sort-lines:unique': ->
         editor = atom.workspace.getActiveTextEditor()
         uniqueLines(editor)
@@ -23,11 +23,10 @@ sortLines = (editor) ->
     textLines.sort (a, b) -> a.localeCompare(b)
     editor.setTextInBufferRange(range, textLines.join("\n"))
 
-sortLinesReversed = (editor) ->
+reverseLines = (editor) ->
   sortableRanges = RangeFinder.rangesFor(editor)
   sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
-    textLines.sort (a, b) -> b.localeCompare(a)
+    textLines = editor.getTextInBufferRange(range).split("\n").reverse()
     editor.setTextInBufferRange(range, textLines.join("\n"))
 
 uniqueLines = (editor) ->

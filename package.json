@@ -6,7 +6,7 @@
   "activationCommands": {
     "atom-text-editor": [
       "sort-lines:sort",
-      "sort-lines:reverse-sort",
+      "sort-lines:reverse",
       "sort-lines:unique",
       "sort-lines:case-insensitive-sort"
     ]
