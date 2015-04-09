@@ -2,7 +2,7 @@
 
 This is a Atom package that add extra operations to lines:
 
-* Sort（Case sensitive or not)
+* Sort (case sensitive or not)
 * Reverse
 * Unique
 * Shuffle
