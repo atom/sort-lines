@@ -1,5 +1,10 @@
-# Sort Lines Package [![Build Status](https://travis-ci.org/atom/sort-lines.svg?branch=master)](https://travis-ci.org/atom/sort-lines)
+# Lines Package [![Build Status](https://travis-ci.org/xpol/atom-lines.svg?branch=master)](https://travis-ci.org/xpol/atom-lines)
 
-Sorts your lines in Atom, never gets tired.
+This is a Atom package that add extra operations to lines:
 
-![sort-lines-demo](https://f.cloud.github.com/assets/2988/1796891/85e69ff2-6a93-11e3-89ac-31927f604592.gif)
+* Sort (case sensitive or not)
+* Reverse
+* Unique
+* Shuffle
+
+This package was forked and modified from [sort-lines](https://atom.io/packages/sort-lines).

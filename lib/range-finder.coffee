@@ -35,6 +35,10 @@ class RangeFinder
       selectionRange.end.row - 1
     else
       selectionRange.end.row
-    endCol = @editor.lineTextForBufferRow(endRow).length
+    buf = @editor.lineTextForBufferRow(endRow)
+    endCol = if buf
+      buf.length
+    else
+      0
 
     new Range [startRow, startCol], [endRow, endCol]

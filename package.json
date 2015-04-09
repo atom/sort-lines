@@ -1,17 +1,18 @@
 {
-  "name": "sort-lines",
-  "main": "./lib/sort-lines",
-  "version": "0.10.0",
-  "description": "Sorts your lines. Never gets tired.",
+  "name": "lines",
+  "main": "./lib/lines",
+  "version": "0.13.0",
+  "description": "Add extra operations to lines: Sort, Reverse, Unique and Shuffle",
   "activationCommands": {
     "atom-text-editor": [
-      "sort-lines:sort",
-      "sort-lines:reverse-sort",
-      "sort-lines:unique",
-      "sort-lines:case-insensitive-sort"
+      "lines:sort",
+      "lines:case-insensitive-sort",
+      "lines:reverse",
+      "lines:unique",
+      "lines:shuffle"
     ]
   },
-  "repository": "https://github.com/atom/sort-lines",
+  "repository": "https://github.com/xpol/atom-lines",
   "license": "MIT",
   "engines": {
     "atom": ">0.39.0"

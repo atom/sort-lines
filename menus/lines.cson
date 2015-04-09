@@ -1,0 +1,15 @@
+'menu': [
+  {
+    'label': 'Edit'
+    'submenu': [
+      'label': 'Lines'
+      'submenu': [
+        { 'label': 'Sort', 'command': 'lines:sort' }
+        { 'label': 'Case Insensitive Sort', 'command': 'lines:case-insensitive-sort' }
+        { 'label': 'Reverse', 'command': 'lines:reverse' }
+        { 'label': 'Unique', 'command': 'lines:unique' }
+        { 'label': 'Shuffle', 'command': 'lines:shuffle' }
+      ]
+    ]
+  }
+]
