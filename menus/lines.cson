@@ -4,11 +4,11 @@
     'submenu': [
       'label': 'Lines'
       'submenu': [
-        { 'label': 'Sort', 'command': 'sort-lines:sort' }
-        { 'label': 'Case Insensitive Sort', 'command': 'sort-lines:case-insensitive-sort' }
-        { 'label': 'Reverse', 'command': 'sort-lines:reverse' }
-        { 'label': 'Unique', 'command': 'sort-lines:unique' }
-        { 'label': 'Shuffle', 'command': 'sort-lines:shuffle' }
+        { 'label': 'Sort', 'command': 'lines:sort' }
+        { 'label': 'Case Insensitive Sort', 'command': 'lines:case-insensitive-sort' }
+        { 'label': 'Reverse', 'command': 'lines:reverse' }
+        { 'label': 'Unique', 'command': 'lines:unique' }
+        { 'label': 'Shuffle', 'command': 'lines:shuffle' }
       ]
     ]
   }
