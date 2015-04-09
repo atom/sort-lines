@@ -3,22 +3,22 @@ describe "sorting lines", ->
   [activationPromise, editor, editorView] = []
 
   sortLines = (callback) ->
-    atom.commands.dispatch editorView, "sort-lines:sort"
+    atom.commands.dispatch editorView, "lines:sort"
     waitsForPromise -> activationPromise
     runs(callback)
 
   reverseLines = (callback) ->
-    atom.commands.dispatch editorView, "sort-lines:reverse"
+    atom.commands.dispatch editorView, "lines:reverse"
     waitsForPromise -> activationPromise
     runs(callback)
 
   uniqueLines = (callback) ->
-    atom.commands.dispatch editorView, "sort-lines:unique"
+    atom.commands.dispatch editorView, "lines:unique"
     waitsForPromise -> activationPromise
     runs(callback)
 
   sortLineCaseInsensitive = (callback) ->
-    atom.commands.dispatch editorView, "sort-lines:case-insensitive-sort"
+    atom.commands.dispatch editorView, "lines:case-insensitive-sort"
     waitsForPromise -> activationPromise
     runs(callback)
 
@@ -30,7 +30,7 @@ describe "sorting lines", ->
       editor = atom.workspace.getActiveTextEditor()
       editorView = atom.views.getView(editor)
 
-      activationPromise = atom.packages.activatePackage('sort-lines')
+      activationPromise = atom.packages.activatePackage('lines')
 
   describe "when no lines are selected", ->
     it "sorts all lines", ->
