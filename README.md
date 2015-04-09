@@ -6,3 +6,5 @@ This is a Atom package that add extra operations to lines:
 * Reverse
 * Unique
 * Shuffle
+
+This package was forked and modified for [sort-lines](https://atom.io/packages/sort-lines).
