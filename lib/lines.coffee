@@ -23,12 +23,14 @@ run = (cmd) ->
     editor.setTextInBufferRange(range, lines.join("\n"))
 
 sort = (lines) ->
-  lines.sort() # Not using localeCompare() since it's buggy in V8.
+  lines.sort()
 
 sortInsensitive = (lines) ->
   lines.sort (a, b) ->
-    r = a.toLowerCase() - b.toLowerCase()
-    if r == 0 then a-b else r
+    r = a.toLowerCase().localeCompare(b.toLowerCase())
+    if r == 0
+      r = a.localeCompare(b)
+    r
 
 reverse = (lines) ->
   lines.reverse()
