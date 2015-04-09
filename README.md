@@ -1,4 +1,4 @@
-# Lines Package [![Build Status](https://travis-ci.org/xpol/lines.svg?branch=master)](https://travis-ci.org/xpol/lines)
+# Lines Package [![Build Status](https://travis-ci.org/xpol/atom-lines.svg?branch=master)](https://travis-ci.org/xpol/atom-lines)
 
 This is a Atom package that add extra operations to lines:
 
@@ -7,4 +7,4 @@ This is a Atom package that add extra operations to lines:
 * Unique
 * Shuffle
 
-This package was forked and modified for [sort-lines](https://atom.io/packages/sort-lines).
+This package was forked and modified from [sort-lines](https://atom.io/packages/sort-lines).
