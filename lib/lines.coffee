@@ -3,15 +3,15 @@ RangeFinder = require './range-finder'
 module.exports =
   activate: ->
     atom.commands.add 'atom-text-editor',
-      'sort-lines:sort': ->
+      'lines:sort': ->
         run sort
-      'sort-lines:case-insensitive-sort': ->
+      'lines:case-insensitive-sort': ->
         run sortInsensitive
-      'sort-lines:reverse': ->
+      'lines:reverse': ->
         run reverse
-      'sort-lines:unique': ->
+      'lines:unique': ->
         run unique
-      'sort-lines:shuffle': ->
+      'lines:shuffle': ->
         run shuffle
 
 run = (cmd) ->
