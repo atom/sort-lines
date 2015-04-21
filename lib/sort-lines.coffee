@@ -16,30 +16,25 @@ module.exports =
         editor = atom.workspace.getActiveTextEditor()
         sortLinesInsensitive(editor)
 
-sortLines = (editor) ->
+sortTextLines = (editor, sorter) ->
   sortableRanges = RangeFinder.rangesFor(editor)
   sortableRanges.forEach (range) ->
     textLines = editor.getTextInBufferRange(range).split("\n")
-    textLines.sort (a, b) -> a.localeCompare(b)
+    textLines = sorter(textLines)
     editor.setTextInBufferRange(range, textLines.join("\n"))
+
+sortLines = (editor) ->
+   sortTextLines editor, (textLines) ->
+    textLines.sort (a, b) -> a.localeCompare(b)
 
 sortLinesReversed = (editor) ->
-  sortableRanges = RangeFinder.rangesFor(editor)
-  sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
+   sortTextLines editor, (textLines) ->
     textLines.sort (a, b) -> b.localeCompare(a)
-    editor.setTextInBufferRange(range, textLines.join("\n"))
 
 uniqueLines = (editor) ->
-  sortableRanges = RangeFinder.rangesFor(editor)
-  sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
-    uniqued = textLines.filter (value, index, self) -> self.indexOf(value) == index
-    editor.setTextInBufferRange(range, uniqued.join("\n"))
+   sortTextLines editor, (textLines) ->
+    textLines.filter (value, index, self) -> self.indexOf(value) == index
 
 sortLinesInsensitive = (editor) ->
-  sortableRanges = RangeFinder.rangesFor(editor)
-  sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
+   sortTextLines editor, (textLines) ->
     textLines.sort (a, b) -> a.toLowerCase().localeCompare(b.toLowerCase())
-    editor.setTextInBufferRange(range, textLines.join("\n"))
