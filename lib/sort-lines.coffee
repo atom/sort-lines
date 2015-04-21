@@ -26,18 +26,15 @@ sortTextLines = (editor, sorter) ->
 sortLines = (editor) ->
    sortTextLines editor, (textLines) ->
     textLines.sort (a, b) -> a.localeCompare(b)
-    return textLines
 
 sortLinesReversed = (editor) ->
    sortTextLines editor, (textLines) ->
     textLines.sort (a, b) -> b.localeCompare(a)
-    return textLines
 
 uniqueLines = (editor) ->
    sortTextLines editor, (textLines) ->
-    return textLines.filter (value, index, self) -> self.indexOf(value) == index
+    textLines.filter (value, index, self) -> self.indexOf(value) == index
 
 sortLinesInsensitive = (editor) ->
    sortTextLines editor, (textLines) ->
     textLines.sort (a, b) -> a.toLowerCase().localeCompare(b.toLowerCase())
-    return textLines
