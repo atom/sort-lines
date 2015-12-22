@@ -6,6 +6,8 @@
       'submenu': [
         { 'label': 'Sort', 'command': 'sort-lines:sort' }
         { 'label': 'Reverse Sort', 'command': 'sort-lines:reverse-sort' }
+        { 'label': 'Length sort', 'command': 'sort-lines:length' }
+        { 'label': 'Reverse length sort', 'command': 'sort-lines:reverse-length' }
         { 'label': 'Unique', 'command': 'sort-lines:unique' }
         { 'label': 'Sort (Case Insensitive)', 'command': 'sort-lines:case-insensitive-sort' }
       ]

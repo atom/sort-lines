@@ -22,6 +22,16 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  sortLinesLength = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:length"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
+  sortLinesReversedLength = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:reverse-length"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     waitsForPromise ->
       atom.workspace.open()
@@ -198,4 +208,38 @@ describe "sorting lines", ->
           Hydrogen
           lithium
           Lithium
+        """
+
+  describe "length sorting", ->
+    it "sorts lines longest first", ->
+      editor.setText """
+        Hydrogen
+        Helium
+        Lithium
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesLength ->
+        expect(editor.getText()).toBe """
+          Hydrogen
+          Lithium
+          Helium
+        """
+
+  describe "reverse length sorting", ->
+    it "sorts lines shortest first", ->
+      editor.setText """
+        Hydrogen
+        Helium
+        Lithium
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesReversedLength ->
+        expect(editor.getText()).toBe """
+          Helium
+          Lithium
+          Hydrogen
         """

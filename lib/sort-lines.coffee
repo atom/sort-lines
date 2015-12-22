@@ -15,6 +15,12 @@ module.exports =
       'sort-lines:case-insensitive-sort': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLinesInsensitive(editor)
+      'sort-lines:length': ->
+        editor = atom.workspace.getActiveTextEditor()
+        sortLinesLength(editor)
+      'sort-lines:reverse-length': ->
+        editor = atom.workspace.getActiveTextEditor()
+        sortLinesReversedLength(editor)
 
 sortTextLines = (editor, sorter) ->
   sortableRanges = RangeFinder.rangesFor(editor)
@@ -38,3 +44,11 @@ uniqueLines = (editor) ->
 sortLinesInsensitive = (editor) ->
   sortTextLines editor, (textLines) ->
     textLines.sort (a, b) -> a.toLowerCase().localeCompare(b.toLowerCase())
+
+sortLinesLength = (editor) ->
+  sortTextLines editor, (textLines) ->
+    textLines.sort (a, b) -> b.length - a.length
+
+sortLinesReversedLength = (editor) ->
+  sortTextLines editor, (textLines) ->
+    textLines.sort (a, b) -> a.length - b.length
