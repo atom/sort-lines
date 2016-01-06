@@ -8,7 +8,8 @@
       "sort-lines:sort",
       "sort-lines:reverse-sort",
       "sort-lines:unique",
-      "sort-lines:case-insensitive-sort"
+      "sort-lines:case-insensitive-sort",
+      "sort-lines:natural"
     ]
   },
   "repository": "https://github.com/atom/sort-lines",
