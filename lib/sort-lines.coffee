@@ -52,3 +52,4 @@ sortLinesNatural = (editor) ->
       return (if a < b then -1 else 1) if aWord isnt bWord
       return (+aLeadingNum) - (+bLeadingNum) if aLeadingNum isnt bLeadingNum
       return (+aTrailingNum) - (+bTrailingNum) if aTrailingNum isnt bTrailingNum
+      return 0
