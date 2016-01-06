@@ -50,6 +50,6 @@ sortLinesNatural = (editor) ->
       [__, aLeadingNum, aWord, aTrailingNum, aRemainder] = naturalSortRegex.exec(a)
       [__, bLeadingNum, bWord, bTrailingNum, bRemainder] = naturalSortRegex.exec(b)
       return (if a < b then -1 else 1) if aWord isnt bWord
-      return (+aLeadingNum) - (+bLeadingNum) if aLeadingNum isnt bLeadingNum
-      return (+aTrailingNum) - (+bTrailingNum) if aTrailingNum isnt bTrailingNum
+      return (if aLeadingNum < bLeadingNum then -1 else 1) if aLeadingNum isnt bLeadingNum
+      return (if aTrailingNum < bTrailingNum then -1 else 1) if aTrailingNum isnt bTrailingNum
       return 0

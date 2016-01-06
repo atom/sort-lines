@@ -297,3 +297,23 @@ describe "sorting lines", ->
           c2
           d1
         """
+
+    it "properly handles leading zeros", ->
+      editor.setText """
+        a01
+        a001
+        a003
+        a002
+        a02
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+        a001
+        a002
+        a003
+        a01
+        a02
+        """
