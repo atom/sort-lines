@@ -22,6 +22,11 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  sortLinesNatural = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:natural"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     waitsForPromise ->
       atom.workspace.open()
@@ -198,4 +203,117 @@ describe "sorting lines", ->
           Hydrogen
           lithium
           Lithium
+        """
+
+  describe "natural sorting", ->
+    it "orders by leading numerals", ->
+      editor.setText """
+        4a
+        1a
+        2a
+        3a
+        0a
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          0a
+          1a
+          2a
+          3a
+          4a
+        """
+
+    it "orders by word", ->
+      editor.setText """
+        1Hydrogen1
+        1Beryllium1
+        1Carbon1
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          1Beryllium1
+          1Carbon1
+          1Hydrogen1
+        """
+
+    it "orders by trailing numeral", ->
+      editor.setText """
+        a4
+        a0
+        a1
+        a2
+        a3
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          a0
+          a1
+          a2
+          a3
+          a4
+        """
+
+    it "orders by leading numeral before word", ->
+      editor.setText """
+        4b
+        2b
+        3a
+        1a
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          1a
+          2b
+          3a
+          4b
+        """
+
+    it "orders by word before trailing number", ->
+      editor.setText """
+        c2
+        a4
+        d1
+        b3
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          a4
+          b3
+          c2
+          d1
+        """
+
+    it "properly handles leading zeros", ->
+      editor.setText """
+        a01
+        a001
+        a003
+        a002
+        a02
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+        a001
+        a002
+        a003
+        a01
+        a02
         """
