@@ -2,7 +2,7 @@ RangeFinder = require './range-finder'
 
 module.exports =
   activate: ->
-    atom.commands.add 'atom-text-editor:not([mini])',
+    @disposables = atom.commands.add 'atom-text-editor:not([mini])',
       'sort-lines:sort': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLines(editor)
@@ -18,6 +18,9 @@ module.exports =
       'sort-lines:natural': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLinesNatural(editor)
+
+  deactivate: ->
+    @disposables.dispose()
 
 sortTextLines = (editor, sorter) ->
   sortableRanges = RangeFinder.rangesFor(editor)

@@ -1,3 +1,8 @@
+hasCommand = (element, name) ->
+  commands = atom.commands.findCommands(target: element)
+  found = true for command in commands when command.name is name
+
+  found
 
 describe "sorting lines", ->
   [activationPromise, editor, editorView] = []
@@ -36,6 +41,25 @@ describe "sorting lines", ->
       editorView = atom.views.getView(editor)
 
       activationPromise = atom.packages.activatePackage('sort-lines')
+
+  describe 'activate', ->
+    it 'creates the commands', ->
+      expect(hasCommand(editorView, 'sort-lines:sort')).toBeTruthy()
+      expect(hasCommand(editorView, 'sort-lines:reverse-sort')).toBeTruthy()
+      expect(hasCommand(editorView, 'sort-lines:unique')).toBeTruthy()
+      expect(hasCommand(editorView, 'sort-lines:case-insensitive-sort')).toBeTruthy()
+      expect(hasCommand(editorView, 'sort-lines:natural')).toBeTruthy()
+
+  describe 'deactivate', ->
+    beforeEach ->
+      atom.packages.deactivatePackage('sort-lines')
+
+    it 'removes the commands', ->
+      expect(hasCommand(editorView, 'sort-lines:sort')).toBeFalsy()
+      expect(hasCommand(editorView, 'sort-lines:reverse-sort')).toBeFalsy()
+      expect(hasCommand(editorView, 'sort-lines:unique')).toBeFalsy()
+      expect(hasCommand(editorView, 'sort-lines:case-insensitive-sort')).toBeFalsy()
+      expect(hasCommand(editorView, 'sort-lines:natural')).toBeFalsy()
 
   describe "when no lines are selected", ->
     it "sorts all lines", ->
