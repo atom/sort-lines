@@ -15,7 +15,7 @@
   "repository": "https://github.com/atom/sort-lines",
   "license": "MIT",
   "engines": {
-    "atom": ">0.39.0"
+    "atom": ">=1.4.0 <2.0.0"
   },
   "dependencies": {}
 }
