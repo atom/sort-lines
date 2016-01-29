@@ -22,7 +22,7 @@ module.exports =
 sortTextLines = (editor, sorter) ->
   sortableRanges = RangeFinder.rangesFor(editor)
   sortableRanges.forEach (range) ->
-    textLines = editor.getTextInBufferRange(range).split("\n")
+    textLines = editor.getTextInBufferRange(range).split(/\r?\n/g)
     textLines = sorter(textLines)
     editor.setTextInBufferRange(range, textLines.join("\n"))
 

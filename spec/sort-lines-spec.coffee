@@ -184,6 +184,14 @@ describe "sorting lines", ->
           Lithium
         """
 
+    it "uniques all lines using CRLF line-endings", ->
+      editor.setText "Hydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\nHydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\nHydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\nHydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\n"
+
+      editor.setCursorBufferPosition([0,0])
+
+      uniqueLines ->
+        expect(editor.getText()).toBe "Hydrogen\r\nHelium\r\nLithium\r\n"
+
   describe "case-insensitive sorting", ->
     it "sorts all lines, ignoring case", ->
       editor.setText """
