@@ -27,6 +27,16 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  sortLinesYamlAwareRoamingMode = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:yaml-aware#roaming-mode"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
+  sortLinesYamlAwareSteadyMode = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:yaml-aware#steady-mode"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     waitsForPromise ->
       atom.workspace.open()
@@ -325,3 +335,149 @@ describe "sorting lines", ->
         a01
         a02
         """
+
+  describe "YAML-aware sorting (roaming mode)", ->
+    it "sorts all YAML blocks and each block is followed \
+by the group of comments preceding it", ->
+      editor.setText YAML
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesYamlAwareRoamingMode ->
+        expect(editor.getText()).toBe """\
+# A long time ago in a galaxy far, far away…
+
+Episode VII.5:      # The force is awake
+ - Duke Skybalker has vanished. In his absence, the sinister FIRST
+ - BORDER has risen from the ashes of the Campfire and will not rest
+ - until Skybalker, the last Cheddar, has been destroyed.
+
+ - With the support of the SCHEMATIC, General Fata Morgana leads a
+ - brave DESISTANCE. She's desperate to find her brother Duke and
+ - gain his help in restoring farce and treachery to the galaxy.
+
+ - Fata has sent her most barging pilot on a budget mission to Jakku,
+ - where an old ally has embroidered a clue to Duke’s whereabouts…
+Episode VIII:       # <N/A>
+# A short time ahead in an brewery very, very near…
+
+# Gravity Falls Public Access TV
+# * Why You Ackin' So Cray-Cray?
+# * The Duchess Approves
+# * Nearly Almost Dead But Not Quite!
+Gravity Falls Bargain Movie Showcase:
+  # Other movies
+  - The Widdlest Wampire
+  - The Planet People of Planet Planet
+  - Help! My Mummy's a Werewolf!
+  - Help! My Mummy's a Werewolf! 2: This Again
+  - Attack of the Exclamation Points!!!!!!!!!!
+  - The Man With No Taste
+  - Ghost Turtle
+
+# The quick brown ox jumps over the lazy hog
+The mighty ranch:
+ - Old MACDONALD had a farm
+ - E-I-E-I-O
+ - And on his farm he had a cow
+ - E-I-E-I-O
+ - With a moo moo here
+ - And a moo moo there
+ - Here a moo, there a m...   ## END OF TRANSMISSION ##
+
+"""
+
+  describe "YAML-aware sorting (steady mode)", ->
+    it "sorts all YAML blocks and leaves all peripheral \
+comments in place", ->
+      editor.setText YAML
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesYamlAwareSteadyMode ->
+        expect(editor.getText()).toBe """\
+# A long time ago in a galaxy far, far away…
+
+# Gravity Falls Public Access TV
+# * Why You Ackin' So Cray-Cray?
+# * The Duchess Approves
+# * Nearly Almost Dead But Not Quite!
+Episode VII.5:      # The force is awake
+ - Duke Skybalker has vanished. In his absence, the sinister FIRST
+ - BORDER has risen from the ashes of the Campfire and will not rest
+ - until Skybalker, the last Cheddar, has been destroyed.
+
+ - With the support of the SCHEMATIC, General Fata Morgana leads a
+ - brave DESISTANCE. She's desperate to find her brother Duke and
+ - gain his help in restoring farce and treachery to the galaxy.
+
+ - Fata has sent her most barging pilot on a budget mission to Jakku,
+ - where an old ally has embroidered a clue to Duke’s whereabouts…
+Episode VIII:       # <N/A>
+# A short time ahead in an brewery very, very near…
+
+# The quick brown ox jumps over the lazy hog
+Gravity Falls Bargain Movie Showcase:
+  # Other movies
+  - The Widdlest Wampire
+  - The Planet People of Planet Planet
+  - Help! My Mummy's a Werewolf!
+  - Help! My Mummy's a Werewolf! 2: This Again
+  - Attack of the Exclamation Points!!!!!!!!!!
+  - The Man With No Taste
+  - Ghost Turtle
+
+The mighty ranch:
+ - Old MACDONALD had a farm
+ - E-I-E-I-O
+ - And on his farm he had a cow
+ - E-I-E-I-O
+ - With a moo moo here
+ - And a moo moo there
+ - Here a moo, there a m...   ## END OF TRANSMISSION ##
+
+"""
+
+
+YAML = """\
+# A long time ago in a galaxy far, far away…
+
+# Gravity Falls Public Access TV
+# * Why You Ackin' So Cray-Cray?
+# * The Duchess Approves
+# * Nearly Almost Dead But Not Quite!
+Gravity Falls Bargain Movie Showcase:
+  # Other movies
+  - The Widdlest Wampire
+  - The Planet People of Planet Planet
+  - Help! My Mummy's a Werewolf!
+  - Help! My Mummy's a Werewolf! 2: This Again
+  - Attack of the Exclamation Points!!!!!!!!!!
+  - The Man With No Taste
+  - Ghost Turtle
+Episode VIII:       # <N/A>
+# A short time ahead in an brewery very, very near…
+
+# The quick brown ox jumps over the lazy hog
+The mighty ranch:
+ - Old MACDONALD had a farm
+ - E-I-E-I-O
+ - And on his farm he had a cow
+ - E-I-E-I-O
+ - With a moo moo here
+ - And a moo moo there
+ - Here a moo, there a m...   ## END OF TRANSMISSION ##
+
+Episode VII.5:      # The force is awake
+ - Duke Skybalker has vanished. In his absence, the sinister FIRST
+ - BORDER has risen from the ashes of the Campfire and will not rest
+ - until Skybalker, the last Cheddar, has been destroyed.
+
+ - With the support of the SCHEMATIC, General Fata Morgana leads a
+ - brave DESISTANCE. She's desperate to find her brother Duke and
+ - gain his help in restoring farce and treachery to the galaxy.
+
+ - Fata has sent her most barging pilot on a budget mission to Jakku,
+ - where an old ally has embroidered a clue to Duke’s whereabouts…
+
+"""
