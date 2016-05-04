@@ -36,7 +36,7 @@ sortLinesReversed = (editor) ->
 
 uniqueLines = (editor) ->
   sortTextLines editor, (textLines) ->
-    textLines.filter (value, index, self) -> self.indexOf(value) == index
+    Array.from(new Set(textLines))
 
 sortLinesInsensitive = (editor) ->
   sortTextLines editor, (textLines) ->
