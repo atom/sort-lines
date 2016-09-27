@@ -10,12 +10,12 @@ All of the following commands are under the `atom-text-editor` selector.
 
 If any lines are selected in the active buffer, the commands operate on the selected lines. Otherwise, the commands operate on all lines in the active buffer.
 
-|Command|Description|
-|-------|-----------|
-|`sort-lines:sort`|Sorts the lines (case sensitive)|
+|Command|Description|Keybinding|
+|-------|-----------|----------|
+|`sort-lines:sort`|Sorts the lines (case sensitive)|<kbd>F5</kbd>
 |`sort-lines:case-insensitive-sort`|Sorts the lines (case insensitive)|
 |`sort-lines:natural`|Sorts the lines (["natural" order](https://en.wikipedia.org/wiki/Natural_sort_order))|
 |`sort-lines:reverse-sort`|Sorts the lines in reverse order (case sensitive)|
 |`sort-lines:unique`|Removes duplicate lines|
 
-You may want to use keyboard shortcuts for triggering the above commands. This package does not provide keyboard shortcuts by default, but you can easily [define your own](https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings). To learn more, visit the [Using Atom: Basic Customization](https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings) or [Behind Atom: Keymaps In-Depth](https://atom.io/docs/latest/behind-atom-keymaps-in-depth) sections in the [Flight Manual](https://atom.io/docs/latest/).
+Custom keybindings can be added by referencing the above commands.  To learn more, visit the [Using Atom: Basic Customization](http://flight-manual.atom.io/using-atom/sections/basic-customization/#customizing-keybindings) or [Behind Atom: Keymaps In-Depth](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth) sections in the flight manual.
