@@ -12,4 +12,13 @@
       ]
     ]
   }
+  {
+    'label': 'Edit'
+    'submenu': [
+      'label': 'Text'
+      'submenu': [
+        { 'label': 'Sort words', 'command': 'sort-lines:sort-words' }
+      ]
+    ]
+  }
 ]

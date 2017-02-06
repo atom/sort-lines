@@ -18,6 +18,9 @@ module.exports =
       'sort-lines:natural': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLinesNatural(editor)
+      'sort-lines:sort-words': ->
+        editor = atom.workspace.getActiveTextEditor()
+        sortWords(editor)
 
 sortTextLines = (editor, sorter) ->
   sortableRanges = RangeFinder.rangesFor(editor)
@@ -53,3 +56,10 @@ sortLinesNatural = (editor) ->
       return (if aLeadingNum < bLeadingNum then -1 else 1) if aLeadingNum isnt bLeadingNum
       return (if aTrailingNum < bTrailingNum then -1 else 1) if aTrailingNum isnt bTrailingNum
       return 0
+
+sortWords = (editor) ->
+  sortableRanges = RangeFinder.rangesFor(editor, false)
+  sortableRanges.forEach (range) ->
+    words = editor.getTextInBufferRange(range).trim().split(/\s+/g)
+    words.sort (a, b) -> a.localeCompare(b)
+    editor.setTextInBufferRange(range, words.join(" "))
