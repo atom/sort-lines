@@ -27,6 +27,11 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  sortWords = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:sort-words"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     waitsForPromise ->
       atom.workspace.open()
@@ -67,6 +72,21 @@ describe "sorting lines", ->
           Helium
           Hydrogen
           Lithium
+
+        """
+
+    it "does not sort words", ->
+      editor.setText """
+        d e f
+        a
+
+      """
+      editor.setCursorBufferPosition([0, 0])
+
+      sortWords ->
+        expect(editor.getText()).toBe """
+          d e f
+          a
 
         """
 
@@ -324,4 +344,38 @@ describe "sorting lines", ->
         a003
         a01
         a02
+        """
+
+  describe "word sorting", ->
+    it "sorts all selected words", ->
+      editor.setText """
+        Duh a crazy b Foo e
+        not selected and therefore should not be sorted
+      """
+      editor.addSelectionForBufferRange([[0, 0], [1, 0]])
+
+      sortWords ->
+        expect(editor.getText()).toBe """
+          a b crazy Duh e Foo
+          not selected and therefore should not be sorted
+        """
+
+    it "sorts partially selected line", ->
+      editor.setText "Duh a crazy b Foo e"
+      editor.addSelectionForBufferRange([[0, 0], [0, "Duh a crazy".length]])
+
+      sortWords ->
+        expect(editor.getText()).toBe "a crazy Duh b Foo e"
+
+    it "strips leading/trailing whitespace and joins words with one space", ->
+      editor.setText """
+        \t a c D   E\tF b \t\t
+        not selected and therefore should not be sorted
+      """
+      editor.addSelectionForBufferRange([[0, 0], [1, 0]])
+
+      sortWords ->
+        expect(editor.getText()).toBe """
+          a b c D E F
+          not selected and therefore should not be sorted
         """
