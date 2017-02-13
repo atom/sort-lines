@@ -27,6 +27,11 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  sortLinesCss = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:css"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   beforeEach ->
     waitsForPromise ->
       atom.workspace.open()
@@ -324,4 +329,21 @@ describe "sorting lines", ->
         a003
         a01
         a02
+        """
+
+  describe "CSS sorting", ->
+    it "sorts longhands after shorthands", ->
+      editor.setText """
+        border: 1px solid #fff;
+        border-top-width: 5px;
+        border-bottom: 2px dashed #000;
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesCss ->
+        expect(editor.getText()).toBe """
+          border: 1px solid #fff;
+          border-bottom: 2px dashed #000;
+          border-top-width: 5px;
         """
