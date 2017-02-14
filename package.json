@@ -9,7 +9,9 @@
       "sort-lines:reverse-sort",
       "sort-lines:unique",
       "sort-lines:case-insensitive-sort",
-      "sort-lines:natural"
+      "sort-lines:natural",
+      "sort-lines:yaml-aware#roaming-mode",
+      "sort-lines:yaml-aware#steady-mode"
     ]
   },
   "repository": "https://github.com/atom/sort-lines",
@@ -17,5 +19,7 @@
   "engines": {
     "atom": ">=1.4.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "yaml-js": "~0.1.3"
+  }
 }

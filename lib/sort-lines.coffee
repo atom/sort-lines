@@ -18,6 +18,12 @@ module.exports =
       'sort-lines:natural': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLinesNatural(editor)
+      'sort-lines:yaml-aware#roaming-mode': ->
+        editor = atom.workspace.getActiveTextEditor()
+        yamlAware.roaming(editor)
+      'sort-lines:yaml-aware#steady-mode': ->
+        editor = atom.workspace.getActiveTextEditor()
+        yamlAware.steady(editor)
 
 sortTextLines = (editor, sorter) ->
   sortableRanges = RangeFinder.rangesFor(editor)
@@ -25,6 +31,8 @@ sortTextLines = (editor, sorter) ->
     textLines = editor.getTextInBufferRange(range).split(/\r?\n/g)
     textLines = sorter(textLines)
     editor.setTextInBufferRange(range, textLines.join("\n"))
+
+yamlAware = require('../js/yaml-aware')(sortTextLines)
 
 sortLines = (editor) ->
   sortTextLines editor, (textLines) ->
