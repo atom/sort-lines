@@ -347,3 +347,23 @@ describe "sorting lines", ->
           border-bottom: 2px dashed #000;
           border-top-width: 5px;
         """
+
+    it "sorts locations after general rules", ->
+      editor.setText """
+        border-width: 1px;
+        border-style: solid;
+        border-top-width: 5px;
+        border-bottom: 2px dashed #000;
+        border-color: #fff;
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesCss ->
+        expect(editor.getText()).toBe """
+          border-color: #fff;
+          border-style: solid;
+          border-width: 1px;
+          border-bottom: 2px dashed #000;
+          border-top-width: 5px;
+        """

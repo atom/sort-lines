@@ -58,8 +58,15 @@ sortLinesNatural = (editor) ->
       return 0
 
 sortLinesCss = (editor) ->
+  normalize = (s) ->
+    s
+    # compare properties, not values
+    .split(':')[0]
+    # ignore white-space
+    .trim()
+    # push location-specific properties after general ones
+    .replace(/-(bottom|left|right|top)/, '-zz-$1')
+
   sortTextLines editor, (textLines) ->
     textLines.sort (a, b) ->
-      a = a.split(':')[0].trim()
-      b = b.split(':')[0].trim()
-      return a.localeCompare(b)
+      return normalize(a).localeCompare(normalize(b))
