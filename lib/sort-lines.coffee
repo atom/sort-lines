@@ -12,6 +12,9 @@ module.exports =
       'sort-lines:unique': ->
         editor = atom.workspace.getActiveTextEditor()
         uniqueLines(editor)
+      'sort-lines:unique-count': ->
+        editor = atom.workspace.getActiveTextEditor()
+        uniqueCountLines(editor)
       'sort-lines:case-insensitive-sort': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLinesInsensitive(editor)
