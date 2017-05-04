@@ -38,6 +38,18 @@ uniqueLines = (editor) ->
   sortTextLines editor, (textLines) ->
     textLines.filter (value, index, self) -> self.indexOf(value) == index
 
+uniqueCountLines = (editor) ->
+  sortTextLines editor, (textLines) ->
+    textLines = textLines.reduce (acc, cur, ind) ->
+      if !acc.hasOwnProperty(cur)
+        acc[cur] = 0
+      acc[cur] += 1
+      return acc
+    ,{}
+    newLines = []
+    newLines.push index + ' - ' + line for index,line of textLines
+    newLines
+
 sortLinesInsensitive = (editor) ->
   sortTextLines editor, (textLines) ->
     textLines.sort (a, b) -> a.toLowerCase().localeCompare(b.toLowerCase())
