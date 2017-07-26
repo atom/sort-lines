@@ -6,7 +6,7 @@ Sorts your lines in Atom, never gets tired.
 
 ### Installation
 
-From GUI: Settings -> Install -> search for "sort-lines" and click "Install"
+From within Atom: Settings -> Install -> search for "sort-lines" and click "Install" OR
 
 From CLI: `apm install sort-lines` and restart Atom.
 
