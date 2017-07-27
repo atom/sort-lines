@@ -17,6 +17,11 @@ describe "sorting lines", ->
     waitsForPromise -> activationPromise
     runs(callback)
 
+  uniqueCountLines = (callback) ->
+    atom.commands.dispatch editorView, "sort-lines:unique-count"
+    waitsForPromise -> activationPromise
+    runs(callback)
+
   sortLineCaseInsensitive = (callback) ->
     atom.commands.dispatch editorView, "sort-lines:case-insensitive-sort"
     waitsForPromise -> activationPromise
@@ -191,6 +196,44 @@ describe "sorting lines", ->
 
       uniqueLines ->
         expect(editor.getText()).toBe "Hydrogen\r\nHelium\r\nLithium\r\n"
+
+  describe "uniqueing count", ->
+    it "uniques all lines and prints the amount next to them", ->
+      editor.setText """
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+        Hydrogen
+        Hydrogen
+        Helium
+        Lithium
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      uniqueCountLines ->
+        expect(editor.getText()).toBe """
+          Hydrogen - 8
+          Helium - 4
+          Lithium - 4
+        """
+
+    it "uniques all lines and prints amount of lines next to them using CRLF line-endings", ->
+      editor.setText "Hydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\nHydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\nHydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\nHydrogen\r\nHydrogen\r\nHelium\r\nLithium\r\n"
+
+      editor.setCursorBufferPosition([0,0])
+
+      uniqueCountLines ->
+        expect(editor.getText()).toBe "Hydrogen - 8\r\nHelium - 4\r\nLithium - 4\r\n"
 
   describe "case-insensitive sorting", ->
     it "sorts all lines, ignoring case", ->

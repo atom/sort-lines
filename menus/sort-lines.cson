@@ -7,6 +7,7 @@
         { 'label': 'Sort', 'command': 'sort-lines:sort' }
         { 'label': 'Reverse Sort', 'command': 'sort-lines:reverse-sort' }
         { 'label': 'Unique', 'command': 'sort-lines:unique' }
+        { 'label': 'Unique Count', 'command': 'sort-lines:unique-count' }
         { 'label': 'Sort (Case Insensitive)', 'command': 'sort-lines:case-insensitive-sort' }
         { 'label': 'Natural', 'command': 'sort-lines:natural' }
       ]
