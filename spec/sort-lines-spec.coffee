@@ -70,6 +70,12 @@ describe "sorting lines", ->
 
         """
 
+    it "gracefully handles attempt to sort an empty editor", ->
+      editor.setText ""
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLines -> expect(editor.getText()).toBe ""
+
   describe "when entire lines are selected", ->
     it "sorts the selected lines", ->
       editor.setText """
