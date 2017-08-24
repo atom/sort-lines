@@ -32,7 +32,7 @@ class RangeFinder
     startRow = selectionRange.start.row
     startCol = 0
     endRow = if selectionRange.end.column == 0
-      selectionRange.end.row - 1
+      if selectionRange.end.row then selectionRange.end.row - 1 else 0
     else
       selectionRange.end.row
     endCol = @editor.lineTextForBufferRow(endRow).length
