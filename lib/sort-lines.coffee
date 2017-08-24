@@ -18,6 +18,9 @@ module.exports =
       'sort-lines:natural': ->
         editor = atom.workspace.getActiveTextEditor()
         sortLinesNatural(editor)
+      'sort-lines:css': ->
+        editor = atom.workspace.getActiveTextEditor()
+        sortLinesCss(editor)
 
 sortTextLines = (editor, sorter) ->
   sortableRanges = RangeFinder.rangesFor(editor)
@@ -53,3 +56,17 @@ sortLinesNatural = (editor) ->
       return (if aLeadingNum < bLeadingNum then -1 else 1) if aLeadingNum isnt bLeadingNum
       return (if aTrailingNum < bTrailingNum then -1 else 1) if aTrailingNum isnt bTrailingNum
       return 0
+
+sortLinesCss = (editor) ->
+  normalize = (s) ->
+    s
+    # compare properties, not values
+    .split(':')[0]
+    # ignore white-space
+    .trim()
+    # push location-specific properties after general ones
+    .replace(/-(bottom|left|right|top)/, '-zz-$1')
+
+  sortTextLines editor, (textLines) ->
+    textLines.sort (a, b) ->
+      return normalize(a).localeCompare(normalize(b))
