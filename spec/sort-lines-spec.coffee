@@ -469,19 +469,3 @@ describe "sorting lines", ->
           $10001.02
           $10002.00
         """
-
-    it "properly handles movie titles", ->
-      editor.setText """
-        1 Title - The Big Lebowski
-        1 Title - Gattaca
-        1 Title - Last Picture Show
-      """
-
-      editor.setCursorBufferPosition([0, 0])
-
-      sortLinesNatural ->
-        expect(editor.getText()).toBe """
-          1 Title - Gattaca
-          1 Title - Last Picture Show
-          1 Title - The Big Lebowski
-        """
