@@ -225,6 +225,7 @@ describe "sorting lines", ->
         4a
         1a
         2a
+        12a
         3a
         0a
       """
@@ -238,6 +239,7 @@ describe "sorting lines", ->
           2a
           3a
           4a
+          12a
         """
 
     it "orders by word", ->
@@ -260,6 +262,7 @@ describe "sorting lines", ->
       editor.setText """
         a4
         a0
+        a12
         a1
         a2
         a3
@@ -274,13 +277,14 @@ describe "sorting lines", ->
           a2
           a3
           a4
+          a12
         """
 
     it "orders by leading numeral before word", ->
       editor.setText """
         4b
-        2b
         3a
+        2b
         1a
       """
 
@@ -325,9 +329,149 @@ describe "sorting lines", ->
 
       sortLinesNatural ->
         expect(editor.getText()).toBe """
-        a001
-        a002
-        a003
-        a01
-        a02
+          a001
+          a002
+          a003
+          a01
+          a02
+        """
+
+    it "properly handles simple numerics", ->
+      editor.setText """
+        10
+        9
+        2
+        1
+        4
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          1
+          2
+          4
+          9
+          10
+        """
+
+    it "properly handles floats", ->
+      editor.setText """
+        10.0401
+        10.022
+        10.042
+        10.021999
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          10.021999
+          10.022
+          10.0401
+          10.042
+        """
+
+    it "properly handles float & decimal notation", ->
+      editor.setText """
+        10.04f
+        10.039F
+        10.038d
+        10.037D
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          10.037D
+          10.038d
+          10.039F
+          10.04f
+        """
+
+    it "properly handles scientific notation", ->
+      editor.setText """
+        1.528535048e5
+        1.528535047e7
+        1.528535049e3
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          1.528535049e3
+          1.528535048e5
+          1.528535047e7
+        """
+
+    it "properly handles ip addresses", ->
+      editor.setText """
+        192.168.0.100
+        192.168.0.1
+        192.168.1.1
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          192.168.0.1
+          192.168.0.100
+          192.168.1.1
+        """
+
+    it "properly handles filenames", ->
+      editor.setText """
+        car.mov
+        01alpha.sgi
+        001alpha.sgi
+        my.string_41299.tif
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          001alpha.sgi
+          01alpha.sgi
+          car.mov
+          my.string_41299.tif
+        """
+
+    it "properly handles dates", ->
+      editor.setText """
+        10/12/2008
+        10/11/2008
+        10/11/2007
+        10/12/2007
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          10/11/2007
+          10/12/2007
+          10/11/2008
+          10/12/2008
+        """
+
+    it "properly handles money", ->
+      editor.setText """
+        $10002.00
+        $10001.02
+        $10001.01
+      """
+
+      editor.setCursorBufferPosition([0, 0])
+
+      sortLinesNatural ->
+        expect(editor.getText()).toBe """
+          $10001.01
+          $10001.02
+          $10002.00
         """

@@ -1,4 +1,5 @@
 RangeFinder = require './range-finder'
+naturalSort = require 'javascript-natural-sort'
 
 module.exports =
   activate: ->
@@ -44,12 +45,4 @@ sortLinesInsensitive = (editor) ->
 
 sortLinesNatural = (editor) ->
   sortTextLines editor, (textLines) ->
-    naturalSortRegex = /^(\d*)(\D*)(\d*)([\s\S]*)$/
-    textLines.sort (a, b) =>
-      return 0 if a is b
-      [__, aLeadingNum, aWord, aTrailingNum, aRemainder] = naturalSortRegex.exec(a)
-      [__, bLeadingNum, bWord, bTrailingNum, bRemainder] = naturalSortRegex.exec(b)
-      return (if a < b then -1 else 1) if aWord isnt bWord
-      return (if aLeadingNum < bLeadingNum then -1 else 1) if aLeadingNum isnt bLeadingNum
-      return (if aTrailingNum < bTrailingNum then -1 else 1) if aTrailingNum isnt bTrailingNum
-      return 0
+    textLines.sort naturalSort

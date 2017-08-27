@@ -17,5 +17,7 @@
   "engines": {
     "atom": ">=1.4.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "javascript-natural-sort": "^0.7.1"
+  }
 }
