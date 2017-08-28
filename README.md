@@ -20,7 +20,7 @@ If any lines are selected in the active buffer, the commands operate on the sele
 |-------|-----------|----------|
 |`sort-lines:sort`|Sorts the lines (case sensitive)|<kbd>F5</kbd>
 |`sort-lines:case-insensitive-sort`|Sorts the lines (case insensitive)|
-|`sort-lines:natural`|Sorts the lines (["natural" order](https://en.wikipedia.org/wiki/Natural_sort_order))|
+|`sort-lines:natural`|Sorts the lines (["natural" order](https://www.npmjs.com/package/javascript-natural-sort))|
 |`sort-lines:reverse-sort`|Sorts the lines in reverse order (case sensitive)|
 |`sort-lines:unique`|Removes duplicate lines|
 
