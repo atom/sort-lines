@@ -29,11 +29,11 @@ sortTextLines = (editor, sorter) ->
 
 sortLines = (editor) ->
   sortTextLines editor, (textLines) ->
-    textLines.sort (a, b) -> a.localeCompare(b)
+    textLines.sort (a, b) -> if a is b then 0 else if a > b then 1 else -1
 
 sortLinesReversed = (editor) ->
   sortTextLines editor, (textLines) ->
-    textLines.sort (a, b) -> b.localeCompare(a)
+    textLines.sort (a, b) -> if a is b then 0 else if a < b then 1 else -1
 
 uniqueLines = (editor) ->
   sortTextLines editor, (textLines) ->
@@ -41,7 +41,10 @@ uniqueLines = (editor) ->
 
 sortLinesInsensitive = (editor) ->
   sortTextLines editor, (textLines) ->
-    textLines.sort (a, b) -> a.toLowerCase().localeCompare(b.toLowerCase())
+    textLines.sort (a, b) ->
+      a = a.toLowerCase()
+      b = b.toLowerCase()
+      if a is b then 0 else if a > b then 1 else -1
 
 sortLinesNatural = (editor) ->
   sortTextLines editor, (textLines) ->
