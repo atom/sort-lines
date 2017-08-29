@@ -1,35 +1,26 @@
 describe('sorting lines', () => {
   let activationPromise, editor, editorView
 
-  const sortLines = (callback) => {
-    atom.commands.dispatch(editorView, 'sort-lines:sort')
+  const runCommand = (commandName, callback) => {
+    atom.commands.dispatch(editorView, commandName)
     waitsForPromise(() => activationPromise)
     runs(callback)
   }
 
-  const sortLinesReversed = (callback) => {
-    atom.commands.dispatch(editorView, 'sort-lines:reverse-sort')
-    waitsForPromise(() => activationPromise)
-    runs(callback)
-  }
+  const sortLines =
+    (callback) => runCommand('sort-lines:sort', callback)
 
-  const uniqueLines = (callback) => {
-    atom.commands.dispatch(editorView, 'sort-lines:unique')
-    waitsForPromise(() => activationPromise)
-    runs(callback)
-  }
+  const sortLinesReversed =
+    (callback) => runCommand('sort-lines:reverse-sort', callback)
 
-  const sortLineCaseInsensitive = (callback) => {
-    atom.commands.dispatch(editorView, 'sort-lines:case-insensitive-sort')
-    waitsForPromise(() => activationPromise)
-    runs(callback)
-  }
+  const uniqueLines =
+    (callback) => runCommand('sort-lines:unique', callback)
 
-  const sortLinesNatural = (callback) => {
-    atom.commands.dispatch(editorView, 'sort-lines:natural')
-    waitsForPromise(() => activationPromise)
-    runs(callback)
-  }
+  const sortLineCaseInsensitive =
+    (callback) => runCommand('sort-lines:case-insensitive-sort', callback)
+
+  const sortLinesNatural =
+    (callback) => runCommand('sort-lines:natural', callback)
 
   beforeEach(() => {
     waitsForPromise(() => atom.workspace.open())
