@@ -203,26 +203,26 @@ describe('sorting lines', () => {
       editor.setText(
         'Hydrogen\r\n' +
         'Hydrogen\r\n' +
-        'Helium\r\n'   +
-        'Lithium\r\n'  +
+        'Helium\r\n' +
+        'Lithium\r\n' +
         'Hydrogen\r\n' +
         'Hydrogen\r\n' +
-        'Helium\r\n'   +
-        'Lithium\r\n'  +
+        'Helium\r\n' +
+        'Lithium\r\n' +
         'Hydrogen\r\n' +
         'Hydrogen\r\n' +
-        'Helium\r\n'   +
-        'Lithium\r\n'  +
+        'Helium\r\n' +
+        'Lithium\r\n' +
         'Hydrogen\r\n' +
         'Hydrogen\r\n' +
-        'Helium\r\n'   +
+        'Helium\r\n' +
         'Lithium\r\n'
       )
 
       uniqueLines(() =>
         expect(editor.getText()).toBe(
           'Hydrogen\r\n' +
-          'Helium\r\n'   +
+          'Helium\r\n' +
           'Lithium\r\n'
         )
       )
