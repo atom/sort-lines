@@ -167,7 +167,6 @@ describe('sorting lines', () => {
         'Helium   \n' +
         'Lithium  \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesReversed(() =>
         expect(editor.getText()).toBe(
@@ -199,7 +198,6 @@ describe('sorting lines', () => {
         'Helium   \n' +
         'Lithium  \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       uniqueLines(() =>
         expect(editor.getText()).toBe(
@@ -229,7 +227,6 @@ describe('sorting lines', () => {
         'Helium\r\n'   +
         'Lithium\r\n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       uniqueLines(() =>
         expect(editor.getText()).toBe(
@@ -250,7 +247,6 @@ describe('sorting lines', () => {
         'Helium   \n' +
         'Lithium  \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLineCaseInsensitive(() =>
         expect(editor.getText()).toBe(
@@ -274,7 +270,6 @@ describe('sorting lines', () => {
         '3a  \n' +
         '0a  \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -294,7 +289,6 @@ describe('sorting lines', () => {
         '1Beryllium1 \n' +
         '1Carbon1    \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -314,7 +308,6 @@ describe('sorting lines', () => {
         'a2  \n' +
         'a3  \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -335,7 +328,6 @@ describe('sorting lines', () => {
         '2b \n' +
         '1a \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -354,7 +346,6 @@ describe('sorting lines', () => {
         'd1 \n' +
         'b3 \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -374,7 +365,6 @@ describe('sorting lines', () => {
         'a002 \n' +
         'a02  \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -395,7 +385,6 @@ describe('sorting lines', () => {
         '1  \n' +
         '4  \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -415,7 +404,6 @@ describe('sorting lines', () => {
         '10.042    \n' +
         '10.021999 \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -434,7 +422,6 @@ describe('sorting lines', () => {
         '10.038d \n' +
         '10.037D \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -452,7 +439,6 @@ describe('sorting lines', () => {
         '1.528535047e7 \n' +
         '1.528535049e3 \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -469,7 +455,6 @@ describe('sorting lines', () => {
         '192.168.0.1   \n' +
         '192.168.1.1   \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -487,7 +472,6 @@ describe('sorting lines', () => {
         '001alpha.sgi        \n' +
         'my.string_41299.tif \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -506,7 +490,6 @@ describe('sorting lines', () => {
         '10/11/2007 \n' +
         '10/12/2007 \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
@@ -524,7 +507,6 @@ describe('sorting lines', () => {
         '$10001.02 \n' +
         '$10001.01 \n'
       )
-      editor.setCursorBufferPosition([0, 0])
 
       sortLinesNatural(() =>
         expect(editor.getText()).toBe(
