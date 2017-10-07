@@ -9,7 +9,8 @@
       "sort-lines:reverse-sort",
       "sort-lines:unique",
       "sort-lines:case-insensitive-sort",
-      "sort-lines:natural"
+      "sort-lines:natural",
+      "sort-lines:shuffle"
     ]
   },
   "repository": "https://github.com/atom/sort-lines",
@@ -18,6 +19,7 @@
     "atom": ">=1.4.0 <2.0.0"
   },
   "dependencies": {
+    "array-shuffle": "^1.0.1",
     "javascript-natural-sort": "^0.7.1"
   }
 }

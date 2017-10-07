@@ -22,6 +22,9 @@ describe('sorting lines', () => {
   const sortLinesNatural =
     (callback) => runCommand('sort-lines:natural', callback)
 
+  const shuffleLines =
+    (callback) => runCommand('sort-lines:shuffle', callback)
+
   beforeEach(() => {
     waitsForPromise(() => atom.workspace.open())
 
@@ -273,6 +276,29 @@ describe('sorting lines', () => {
         )
       )
     })
+    
+    describe('shuffling', () => {
+      it('shuffle lines', () => {
+        editor.setText(
+          '4a  \n' +
+          '1a  \n' +
+          '2a  \n' +
+          '12a \n' +
+          '3a  \n' +
+          '0a  \n'
+        )
+
+        shuffleLines(() =>
+          expect(editor.getText()).toNotBe(
+            '4a  \n' +
+            '1a  \n' +
+            '2a  \n' +
+            '12a \n' +
+            '3a  \n' +
+            '0a  \n'
+          )
+        )
+      })
 
     it('orders by word', () => {
       editor.setText(
