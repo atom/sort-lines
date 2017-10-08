@@ -299,6 +299,8 @@ describe('sorting lines', () => {
           )
         )
       })
+    })
+
 
     it('orders by word', () => {
       editor.setText(
