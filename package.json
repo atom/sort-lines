@@ -10,7 +10,7 @@
       "sort-lines:unique",
       "sort-lines:case-insensitive-sort",
       "sort-lines:natural",
-      "sort-lines:length",
+      "sort-lines:by-length",
       "sort-lines:shuffle"
     ]
   },

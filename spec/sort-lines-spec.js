@@ -23,7 +23,7 @@ describe('sorting lines', () => {
     (callback) => runCommand('sort-lines:natural', callback)
 
   const sortLinesByLength =
-      (callback) => runCommand('sort-lines:length', callback)
+      (callback) => runCommand('sort-lines:by-length', callback)
 
   const shuffleLines =
     (callback) => runCommand('sort-lines:shuffle', callback)
