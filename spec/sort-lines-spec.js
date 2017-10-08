@@ -22,6 +22,9 @@ describe('sorting lines', () => {
   const sortLinesNatural =
     (callback) => runCommand('sort-lines:natural', callback)
 
+  const sortLinesByLength =
+      (callback) => runCommand('sort-lines:by-length', callback)
+
   const shuffleLines =
     (callback) => runCommand('sort-lines:shuffle', callback)
 
@@ -507,6 +510,28 @@ describe('sorting lines', () => {
           '$10001.01 \n' +
           '$10001.02 \n' +
           '$10002.00 \n'
+        )
+      )
+    })
+  })
+
+  describe('sorting by length', () => {
+    it('sorts the lines by length', () => {
+      editor.setText(
+        'Hydrogen\n' +
+        'Helium\n' +
+        'Lithium\n' +
+        'Beryllium\n' +
+        'Boron\n'
+      )
+
+      sortLinesByLength(() =>
+        expect(editor.getText()).toBe(
+          'Boron\n' +
+          'Helium\n' +
+          'Lithium\n' +
+          'Hydrogen\n' +
+          'Beryllium\n'
         )
       )
     })

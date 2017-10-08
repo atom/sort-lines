@@ -22,6 +22,7 @@ If any lines are selected in the active buffer, the commands operate on the sele
 |`sort-lines:case-insensitive-sort`|Sorts the lines (case insensitive)|
 |`sort-lines:natural`|Sorts the lines (["natural" order](https://www.npmjs.com/package/javascript-natural-sort))|
 |`sort-lines:reverse-sort`|Sorts the lines in reverse order (case sensitive)|
+|`sort-lines:by-length`|Sorts the lines by length|
 |`sort-lines:shuffle`|Sorts the lines in random order|
 |`sort-lines:unique`|Removes duplicate lines|
 
