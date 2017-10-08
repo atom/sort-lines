@@ -1,7 +1,7 @@
 {
   "name": "sort-lines",
   "main": "./lib/sort-lines",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Sorts your lines. Never gets tired.",
   "activationCommands": {
     "atom-text-editor": [
@@ -10,7 +10,8 @@
       "sort-lines:unique",
       "sort-lines:case-insensitive-sort",
       "sort-lines:natural",
-      "sort-lines:length"
+      "sort-lines:length",
+      "sort-lines:shuffle"
     ]
   },
   "repository": "https://github.com/atom/sort-lines",
@@ -19,6 +20,7 @@
     "atom": ">=1.4.0 <2.0.0"
   },
   "dependencies": {
+    "array-shuffle": "^1.0.1",
     "javascript-natural-sort": "^0.7.1"
   }
 }

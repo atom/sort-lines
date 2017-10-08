@@ -9,7 +9,8 @@
         { 'label': 'Unique', 'command': 'sort-lines:unique' }
         { 'label': 'Sort (Case Insensitive)', 'command': 'sort-lines:case-insensitive-sort' }
         { 'label': 'Natural', 'command': 'sort-lines:natural' },
-        { 'label': 'Length', 'command': 'sort-lines:length' }
+        { 'label': 'Length', 'command': 'sort-lines:length' },
+        { 'label': 'Shuffle', 'command': 'sort-lines:shuffle' }
       ]
     ]
   }

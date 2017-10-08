@@ -25,6 +25,9 @@ describe('sorting lines', () => {
   const sortLinesByLength =
       (callback) => runCommand('sort-lines:length', callback)
 
+  const shuffleLines =
+    (callback) => runCommand('sort-lines:shuffle', callback)
+
   beforeEach(() => {
     waitsForPromise(() => atom.workspace.open())
 
@@ -531,6 +534,27 @@ describe('sorting lines', () => {
           'Beryllium\n'
         )
       )
+    })
+  })
+
+  describe('shuffling', () => {
+    it('shuffle lines', () => {
+      const originalText =
+        'Beryllium \n' +
+        'Boron     \n' +
+        'Helium    \n' +
+        'Hydrogen  \n' +
+        'Lithium   \n'
+
+      editor.setText(originalText)
+
+      shuffleLines(() => {
+        const shuffledText = editor.getText()
+        console.log(originalText);
+        console.log(shuffledText);
+        expect(shuffledText.split('\n').length).toEqual(originalText.split('\n').length)
+        expect(shuffledText).toNotBe(originalText)
+      })
     })
   })
 })
