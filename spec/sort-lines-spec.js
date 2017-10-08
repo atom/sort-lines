@@ -515,7 +515,7 @@ describe('sorting lines', () => {
     })
   })
 
-  describe('by length', () => {
+  describe('sorting by length', () => {
     it('sorts the lines by length', () => {
       editor.setText(
         'Hydrogen\n' +
