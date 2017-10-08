@@ -276,31 +276,6 @@ describe('sorting lines', () => {
         )
       )
     })
-    
-    describe('shuffling', () => {
-      it('shuffle lines', () => {
-        editor.setText(
-          '4a  \n' +
-          '1a  \n' +
-          '2a  \n' +
-          '12a \n' +
-          '3a  \n' +
-          '0a  \n'
-        )
-
-        shuffleLines(() =>
-          expect(editor.getText()).toNotBe(
-            '4a  \n' +
-            '1a  \n' +
-            '2a  \n' +
-            '12a \n' +
-            '3a  \n' +
-            '0a  \n'
-          )
-        )
-      })
-    })
-
 
     it('orders by word', () => {
       editor.setText(
@@ -532,6 +507,30 @@ describe('sorting lines', () => {
           '$10001.01 \n' +
           '$10001.02 \n' +
           '$10002.00 \n'
+        )
+      )
+    })
+  })
+
+  describe('shuffling', () => {
+    it('shuffle lines', () => {
+      editor.setText(
+        '4a  \n' +
+        '1a  \n' +
+        '2a  \n' +
+        '12a \n' +
+        '3a  \n' +
+        '0a  \n'
+      )
+
+      shuffleLines(() =>
+        expect(editor.getText()).toNotBe(
+          '4a  \n' +
+          '1a  \n' +
+          '2a  \n' +
+          '12a \n' +
+          '3a  \n' +
+          '0a  \n'
         )
       )
     })
