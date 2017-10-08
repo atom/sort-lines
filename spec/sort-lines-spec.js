@@ -514,25 +514,22 @@ describe('sorting lines', () => {
 
   describe('shuffling', () => {
     it('shuffle lines', () => {
-      editor.setText(
-        '4a  \n' +
-        '1a  \n' +
-        '2a  \n' +
-        '12a \n' +
-        '3a  \n' +
-        '0a  \n'
-      )
+      const originalText =
+        'Beryllium \n' +
+        'Boron     \n' +
+        'Helium    \n' +
+        'Hydrogen  \n' +
+        'Lithium   \n'
 
-      shuffleLines(() =>
-        expect(editor.getText()).toNotBe(
-          '4a  \n' +
-          '1a  \n' +
-          '2a  \n' +
-          '12a \n' +
-          '3a  \n' +
-          '0a  \n'
-        )
-      )
+      editor.setText(originalText)
+
+      shuffleLines(() => {
+        const shuffledText = editor.getText()
+        console.log(originalText);
+        console.log(shuffledText);
+        expect(shuffledText.split('\n').length).toEqual(originalText.split('\n').length)
+        expect(shuffledText).toNotBe(originalText)
+      })
     })
   })
 })
