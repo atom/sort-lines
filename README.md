@@ -21,6 +21,7 @@ If any lines are selected in the active buffer, the commands operate on the sele
 |`sort-lines:sort`|Sorts the lines (case sensitive)|<kbd>F5</kbd>
 |`sort-lines:case-insensitive-sort`|Sorts the lines (case insensitive)|
 |`sort-lines:natural`|Sorts the lines (["natural" order](https://www.npmjs.com/package/javascript-natural-sort))|
+|`sort-lines:natural-case-insensitive`|Sorts the lines (["natural" order  with case insensitivity](https://www.npmjs.com/package/javascript-natural-sort#to-enable-case-insensitive-sorting))|
 |`sort-lines:reverse-sort`|Sorts the lines in reverse order (case sensitive)|
 |`sort-lines:by-length`|Sorts the lines by length|
 |`sort-lines:shuffle`|Sorts the lines in random order|

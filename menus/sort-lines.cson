@@ -9,6 +9,7 @@
         { 'label': 'Unique', 'command': 'sort-lines:unique' }
         { 'label': 'Sort (Case Insensitive)', 'command': 'sort-lines:case-insensitive-sort' }
         { 'label': 'Natural', 'command': 'sort-lines:natural' }
+        { 'label': 'Natural (Case Insensitive)', 'command': 'sort-lines:natural-case-insensitive' }
         { 'label': 'By Length', 'command': 'sort-lines:by-length' }
         { 'label': 'Shuffle', 'command': 'sort-lines:shuffle' }
       ]

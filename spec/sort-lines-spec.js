@@ -22,6 +22,9 @@ describe('sorting lines', () => {
   const sortLinesNatural =
     (callback) => runCommand('sort-lines:natural', callback)
 
+  const sortLinesNaturalCaseInsensitive =
+    (callback) => runCommand('sort-lines:natural-insensitive', callback)
+
   const sortLinesByLength =
       (callback) => runCommand('sort-lines:by-length', callback)
 
@@ -510,6 +513,30 @@ describe('sorting lines', () => {
           '$10001.01 \n' +
           '$10001.02 \n' +
           '$10002.00 \n'
+        )
+      )
+    })
+  })
+
+  describe('natural with case insensitive sorting', () => {
+    it('sorts naturally with case insensitive sorting', () => {
+      editor.setText(
+        '2Hydrogen \n' +
+        'lithium  \n' +
+        'helium   \n' +
+        'Helium   \n' +
+        '1Helium   \n' +
+        'Lithium  \n'
+      )
+
+      sortLinesNaturalCaseInsensitive(() =>
+        expect(editor.getText()).toBe(
+          '1Helium  \n' +
+          '2Hydrogen    \n' +
+          'helium   \n' +
+          'Helium   \n' +
+          'lithium  \n' +
+          'Lithium  \n' +
         )
       )
     })

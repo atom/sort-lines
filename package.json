@@ -8,6 +8,7 @@
       "sort-lines:sort",
       "sort-lines:case-insensitive-sort",
       "sort-lines:natural",
+      "sort-lines:natural-case-insensitive",
       "sort-lines:reverse-sort",
       "sort-lines:by-length",
       "sort-lines:shuffle",
