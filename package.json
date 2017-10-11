@@ -1,7 +1,7 @@
 {
   "name": "sort-lines",
   "main": "./lib/sort-lines",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "Sorts your lines. Never gets tired.",
   "activationCommands": {
     "atom-text-editor": [
