@@ -235,6 +235,24 @@ describe('sorting lines', () => {
     })
   })
 
+  describe('case-sensitive sorting (the default)', () =>
+    it('sorts all lines, case sensitive', () => {
+      editor.setText(
+        'helium   \n' +
+        'Helium   \n' +
+        'helium   \n'
+      )
+
+      sortLines(() =>
+        expect(editor.getText()).toBe(
+          'helium   \n' +
+          'helium   \n' +
+          'Helium   \n'
+        )
+      )
+    })
+  )
+
   describe('case-insensitive sorting', () =>
     it('sorts all lines, ignoring case', () => {
       editor.setText(
@@ -242,6 +260,7 @@ describe('sorting lines', () => {
         'lithium  \n' +
         'helium   \n' +
         'Helium   \n' +
+        'helium   \n' +
         'Lithium  \n'
       )
 
@@ -249,6 +268,7 @@ describe('sorting lines', () => {
         expect(editor.getText()).toBe(
           'helium   \n' +
           'Helium   \n' +
+          'helium   \n' +
           'Hydrogen \n' +
           'lithium  \n' +
           'Lithium  \n'
