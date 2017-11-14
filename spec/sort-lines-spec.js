@@ -25,6 +25,9 @@ describe('sorting lines', () => {
   const sortLinesByLength =
       (callback) => runCommand('sort-lines:by-length', callback)
 
+  const sortLinesByLengthReversed =
+      (callback) => runCommand('sort-lines:by-length-reversed', callback)
+
   const shuffleLines =
     (callback) => runCommand('sort-lines:shuffle', callback)
 
@@ -552,6 +555,28 @@ describe('sorting lines', () => {
           'Lithium\n' +
           'Hydrogen\n' +
           'Beryllium\n'
+        )
+      )
+    })
+  })
+
+  describe('sorting by length reverse', () => {
+    it('sorts the lines by length in reverse order', () => {
+      editor.setText(
+        'Hydrogen\n' +
+        'Helium\n' +
+        'Lithium\n' +
+        'Beryllium\n' +
+        'Boron\n'
+      )
+
+      sortLinesByLengthReversed(() =>
+        expect(editor.getText()).toBe(
+          'Beryllium\n' +
+          'Hydrogen\n' +
+          'Lithium\n' +
+          'Helium\n' +
+          'Boron\n'
         )
       )
     })

@@ -9,6 +9,7 @@
         { 'label': 'Sort in Natural Order', 'command': 'sort-lines:natural' }
         { 'label': 'Sort in Reverse', 'command': 'sort-lines:reverse-sort' }
         { 'label': 'Sort by Length', 'command': 'sort-lines:by-length' }
+        { 'label': 'Sort by Length in Reverse', 'command': 'sort-lines:by-length-reversed' }
         { 'label': 'Shuffle', 'command': 'sort-lines:shuffle' }
         { 'label': 'Remove Duplicates', 'command': 'sort-lines:unique' }
       ]

@@ -10,6 +10,7 @@
       "sort-lines:natural",
       "sort-lines:reverse-sort",
       "sort-lines:by-length",
+      "sort-lines:by-length-reversed",
       "sort-lines:shuffle",
       "sort-lines:unique"
     ]
