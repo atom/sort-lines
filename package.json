@@ -11,6 +11,7 @@
       "sort-lines:reverse-sort",
       "sort-lines:by-length",
       "sort-lines:shuffle",
+      "sort-lines:reverse",
       "sort-lines:unique"
     ]
   },
