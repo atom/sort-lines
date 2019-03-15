@@ -28,6 +28,9 @@ describe('sorting lines', () => {
   const shuffleLines =
     (callback) => runCommand('sort-lines:shuffle', callback)
 
+  const reverseLines =
+    (callback) => runCommand('sort-lines:reverse', callback)
+
   beforeEach(() => {
     waitsForPromise(() => atom.workspace.open())
 
@@ -575,4 +578,22 @@ describe('sorting lines', () => {
       })
     })
   })
+
+  describe('reversing current order', () =>
+    it('reverse lines in current order', () => {
+      editor.setText(
+        'Hydrogen \n' +
+        'Helium   \n' +
+        'Lithium  \n'
+      )
+
+      reverseLines(() =>
+        expect(editor.getText()).toBe(
+          'Lithium  \n' +
+          'Helium   \n' +
+          'Hydrogen \n'
+        )
+      )
+    })
+  )
 })
