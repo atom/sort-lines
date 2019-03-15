@@ -579,7 +579,7 @@ describe('sorting lines', () => {
     })
   })
   
-  describe('reversed sorting', () =>
+  describe('reversing current order', () =>
     it('reverse lines in current order', () => {
       editor.setText(
         'Hydrogen \n' +
