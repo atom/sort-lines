@@ -27,7 +27,7 @@ describe('sorting lines', () => {
 
   const shuffleLines =
     (callback) => runCommand('sort-lines:shuffle', callback)
-    
+
   const reverseLines =
     (callback) => runCommand('sort-lines:reverse', callback)
 
@@ -578,7 +578,7 @@ describe('sorting lines', () => {
       })
     })
   })
-  
+
   describe('reversing current order', () =>
     it('reverse lines in current order', () => {
       editor.setText(
@@ -590,8 +590,8 @@ describe('sorting lines', () => {
       reverseLines(() =>
         expect(editor.getText()).toBe(
           'Lithium  \n' +
-          'Helium   \n' + 
-          'Hydrogen \n' 
+          'Helium   \n' +
+          'Hydrogen \n'
         )
       )
     })
