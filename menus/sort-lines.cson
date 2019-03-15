@@ -7,7 +7,7 @@
         { 'label': 'Sort', 'command': 'sort-lines:sort' }
         { 'label': 'Sort Ignoring Case', 'command': 'sort-lines:case-insensitive-sort' }
         { 'label': 'Sort in Natural Order', 'command': 'sort-lines:natural' }
-        { 'label': 'Sort in Reverse', 'command': 'sort-lines:reverse-sort' }
+        { 'label': 'Sort in Reverse [deprecated]', 'command': 'sort-lines:reverse-sort' }
         { 'label': 'Sort by Length', 'command': 'sort-lines:by-length' }
         { 'label': 'Reverse Current Order', 'command': 'sort-lines:reverse' }
         { 'label': 'Shuffle', 'command': 'sort-lines:shuffle' }
